@@ -1,0 +1,99 @@
+<script>
+
+function computerPlay() {
+  let choiceArray = [
+      'rock',
+      'paper',
+      'scissors'
+  ];  
+  let choice = choiceArray[Math.floor(Math.random()*choiceArray.length)];
+  return(choice);
+}
+
+function gameRound(playerSelection, computerSelection) {
+    playerSelection = prompt ("Rock, Paper, Scissors, Shoot!");
+    playerSelection = playerSelection.toLowerCase();
+    computerPlay();
+    computerSelection = computerPlay();
+    console.log(computerSelection);
+    if (computerSelection == 'rock') {
+        alert("Bot chose Rock!");
+        switch (playerSelection) {
+            case ("rock"): return(0)
+            break;
+            case ("paper"): return(1)
+            break;
+            case ("scissors"): return(-1)
+            break;
+            default: console.log("What's that? Pick Again")
+            break;
+        }
+    } else if (computerSelection == 'paper') {
+        alert("Bot chose Paper!");
+        switch (playerSelection) {
+            case ("rock"): return(-1)
+            break;
+            case ("paper"): return(0)
+            break;
+            case ("scissors"): return(1)
+            break;
+            default: console.log("What's that? Pick Again")
+            break;
+        }
+    } else if (computerSelection == 'scissors') {
+        alert("Bot chose Scissors!");
+        switch (playerSelection) {
+            case ("rock"): return(1)
+            break;
+            case ("paper"): return(-1)
+            break;
+            case ("scissors"): return(0)
+            break;
+            default: console.log("What's that? Pick Again")
+            break;
+        }
+    } else {
+        console.log("Error");
+    }
+}
+
+function roundResult(x) {
+    if (x == 0) {
+        alert("You tied that round!")
+    } else if (x == 1) {
+        alert("You won that round!")
+    } else if (x == -1) {
+        alert("You lost that round!")
+    }
+
+}
+
+function game() {
+    alert("Best of 5!");
+    let score1 = gameRound();
+    roundResult(score1);
+    let score2 = gameRound();
+    roundResult(score2);
+    let score3 = gameRound();
+    roundResult(score3);
+    let score4 = gameRound();
+    roundResult(score4);
+    let score5 = gameRound();
+    roundResult(score5);
+    let finalscore = (
+        score1*1 + 
+        score2*1 + 
+        score3*1 + 
+        score4*1 + 
+        score5*1 );
+    if (finalscore>0) {
+        alert("WINNER WINNER CHICKEN DINNER!")
+    } else if (finalscore<0) {
+        alert("WOMP WOMP!")
+    } else {
+        alert("5 rounds and you still tied... DOH!")
+    }
+
+}
+game();
+</script>
